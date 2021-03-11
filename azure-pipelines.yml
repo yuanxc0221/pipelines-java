@@ -19,7 +19,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: false
     #testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'test package deploy'
+    goals: 'package'
     #options: 'echo ${OUTPUT_CONTENT} echo $OUTPUT_CONTENT' 
 - task: Gradle@2
   inputs:
