@@ -20,5 +20,4 @@ steps:
     publishJUnitResults: false
     #testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'test package deploy'
-    options: 'echo ${OUTPUT_CONTENT}
-              echo $OUTPUT_CONTENT' 
+    #options: 'echo ${OUTPUT_CONTENT} echo $OUTPUT_CONTENT' 
