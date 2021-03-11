@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-20.04
 
 steps:
 - task: Maven@3
@@ -21,3 +21,11 @@ steps:
     #testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'test package deploy'
     #options: 'echo ${OUTPUT_CONTENT} echo $OUTPUT_CONTENT' 
+- task: Gradle@2
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'build'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    sonarQubeRunAnalysis: false
