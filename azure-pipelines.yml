@@ -9,7 +9,7 @@ stages:
   - stage: 
     displayName: Maven Build
     pool:
-      vmImage: macOS-latest
+      vmImage: ubuntu-latest
     jobs:
       - job: 
         displayName: Maven Build Job 
