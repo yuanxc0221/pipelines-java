@@ -5,27 +5,24 @@
 
 trigger:
 - master
-
-pool:
-  vmImage: ubuntu-20.04
-
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: false
-    #testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
-    #options: 'echo ${OUTPUT_CONTENT} echo $OUTPUT_CONTENT' 
-- task: Gradle@2
-  inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'build'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
+stages: 
+  - stage: 
+    displayName: Maven Build
+    pool:
+      vmImage: macOS-latest
+    jobs:
+      - job: 
+        displayName: Maven Build Job 
+        steps:
+          - task: Maven@3
+            inputs:
+              mavenPomFile: 'pom.xml'
+              mavenOptions: '-Xmx3072m'
+              javaHomeOption: 'JDKVersion'
+              jdkVersionOption: '1.8'
+              jdkArchitectureOption: 'x64'
+              publishJUnitResults: false
+              #testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              goals: 'package'
+              #options: 'echo ${OUTPUT_CONTENT} echo $OUTPUT_CONTENT'
+              sonarQubeRunAnalysis: true
